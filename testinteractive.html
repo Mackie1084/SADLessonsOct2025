@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  />
+  <title>SAD Lesson 2</title>
+
+  <link rel="stylesheet" href="dist/reset.css" />
+  <link rel="stylesheet" href="dist/reveal.css" />
+  <link rel="stylesheet" href="dist/theme/sky.css" />
+  <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+  <link rel="stylesheet" href="custom.css" />
+
+  <style>
+    /* Custom Interactivity Styling */
+    .quiz-option {
+      padding: 10px;
+      margin: 5px;
+      border: 2px solid #0077cc;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .quiz-option:hover {
+      background: #0077cc;
+      color: #fff;
+    }
+    .correct {
+      background: #4caf50 !important;
+      color: #fff;
+    }
+    .wrong {
+      background: #f44336 !important;
+      color: #fff;
+    }
+    .progress-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      height: 5px;
+      background: #0077cc;
+      transition: width 0.2s ease;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Existing Lesson Content -->
+      <section>
+        <h2>Lesson 2: Learning Outcomes</h2>
+        <ul>
+          <li class="fragment">LO1: Discuss the requirements needed in system planning</li>
+          <li class="fragment">L02: Identify the deliverables/outputs of the system planning phase</li>
+          <li class="fragment">L03: Familiar with the requirements of the feasibility study</li>
+          <li class="fragment">L04: Discuss the importance of conducting preliminary investigation</li>
+        </ul>
+      </section>
+
+      <!-- Interactive Quiz Example -->
+      <section data-transition="zoom">
+        <h2>Quick Quiz</h2>
+        <p>Which of the following is NOT a main reason for a systems project?</p>
+        <div class="quiz-option" onclick="checkAnswer(this,false)">Cost Reduction</div>
+        <div class="quiz-option" onclick="checkAnswer(this,false)">Improved Service</div>
+        <div class="quiz-option" onclick="checkAnswer(this,true)">Personal Preference of Analyst</div>
+        <div class="quiz-option" onclick="checkAnswer(this,false)">Competitive Advantage</div>
+      </section>
+
+      <!-- Interactive Poll -->
+      <section data-transition="convex">
+        <h2>Poll: Which feasibility study is most challenging?</h2>
+        <p class="fragment">Vote with <b>1,2,3</b> keys!</p>
+        <ul>
+          <li class="fragment">1️⃣ Technical Feasibility</li>
+          <li class="fragment">2️⃣ Economic Feasibility</li>
+          <li class="fragment">3️⃣ Schedule Feasibility</li>
+        </ul>
+      </section>
+
+      <!-- Animated Content -->
+      <section data-transition="fade">
+        <h3>2.3 Overview of Feasibility Study</h3>
+        <p class="fragment fade-in">Feasibility study asks: <i>"Should we proceed?"</i></p>
+        <p class="fragment fade-up">Helps avoid costly mistakes</p>
+        <p class="fragment fade-right">Three types of feasibility: Technical, Economic, Schedule</p>
+      </section>
+
+      <!-- Summary with Progress -->
+      <section>
+        <h2>Lesson 2 Summary</h2>
+        <ul>
+          <li class="fragment">Systems projects are initiated to improve performance or reduce costs</li>
+          <li class="fragment">The preliminary investigation evaluates feasibility</li>
+          <li class="fragment">Six steps ensure clarity, scope, and recommendations</li>
+        </ul>
+        <p class="fragment"><b>End of Lesson 🚀</b></p>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Progress Bar -->
+  <div class="progress-bar" id="progressBar"></div>
+
+  <!-- Scripts -->
+  <script src="dist/reveal.js"></script>
+  <script src="plugin/notes/notes.js"></script>
+  <script src="plugin/markdown/markdown.js"></script>
+  <script src="plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+    });
+
+    // Progress Bar Update
+    Reveal.on('slidechanged', updateProgress);
+    Reveal.on('ready', updateProgress);
+    function updateProgress() {
+      let progress = (Reveal.getSlidePastCount() / Reveal.getTotalSlides()) * 100;
+      document.getElementById("progressBar").style.width = progress + "%";
+    }
+
+    // Quiz Interaction
+    function checkAnswer(element, isCorrect) {
+      if (isCorrect) {
+        element.classList.add("correct");
+      } else {
+        element.classList.add("wrong");
+      }
+    }
+  </script>
+</body>
+</html>
